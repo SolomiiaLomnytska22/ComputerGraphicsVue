@@ -1,20 +1,16 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import HeaderMenu from "@/components/HeaderMenu";
-import Fractals from "@/components/Fractals";
-import ColorSchemes from "@/components/ColorSchemes";
-import AffineTransformations from "@/components/AffineTransformations";
-
-Vue.use(VueRouter);
+import FractalsPage from "@/components/FractalsPage";
+import MainPage from "@/components/MainPage";
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  { path: "/fractals", component: Fractals, name: "fractals" },
-  { path: "/color-schemes", component: ColorSchemes, name: "color-schemes" },
-  {path: "/affine-transformations",component: AffineTransformations, name: "affine-transformations",},
-];
+  { path: "/", component: MainPage, name: "main-page" },
+  { path: "/fractals", component: FractalsPage, name: "fractals" },
 
-const router = new VueRouter({
-  routes,
-});
+]; 
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
 
 export default router;

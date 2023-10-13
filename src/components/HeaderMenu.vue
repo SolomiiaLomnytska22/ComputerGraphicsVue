@@ -1,11 +1,11 @@
 <template>
     <header>
-      <img src="../assets/Logo.svg" alt="Logo">
+      <img src="../assets/Logo.svg" alt="Logo" @click="navigateTo('main-page')">
       <nav>
         <ul>
           <li @click="navigateTo('fractals')">Fractals</li>
-          <li @click="navigateTo('color-schemes')">Color Schemes</li>
-          <li @click="navigateTo('affine-transformations')">Affine Transformations</li>
+          <li @click="navigateTo('fractals')">Color Schemes</li>
+          <li @click="navigateTo('fractals')">Affine Transformations</li>
         </ul>
       </nav>
     </header>

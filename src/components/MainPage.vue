@@ -1,9 +1,7 @@
 <template>
  <div class = "main-content">
-<div class="learn-more-btn"></div>
-
-
-<div class = "rectangle"><CardsMainPage></CardsMainPage> </div>
+    <div class="learn-more-btn"></div>
+    <div class = "rectangle"><CardsMainPage></CardsMainPage> </div>
 </div>
 <FooterMainPage></FooterMainPage>
 </template>

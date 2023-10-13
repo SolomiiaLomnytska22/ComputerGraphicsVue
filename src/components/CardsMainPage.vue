@@ -1,8 +1,8 @@
 <template>
-    <div class = "caption">OUR TASKS</div>
+    <h1 class="caption">OUR TASKS</h1>
     <div class="card-list">
-      <div class="card" v-for="(card, index) in cards" :key="index">
-        <div class="card-image" :style="{ backgroundImage: `url(${card.image})` }">
+      <div class="card" v-for="(card, index) in cards" :key="index" @click="navigateTo(card.route)">
+        <div class="card-image" :style="{ backgroundImage: `url(${card.image})`}"> 
           <div class="gradient-overlay"></div>
           <div class="card-content">
             <p class="card-title">{{ card.title }}</p>
@@ -14,20 +14,28 @@
   
   <script>
   export default {
+    methods: {
+      navigateTo(route) {
+        this.$router.push({ name: route });
+      },
+    },
     data() {
       return {
         cards: [
           {
             image: 'https://www.hpcwire.com/wp-content/uploads/2014/05/Mandelbrot_400x.jpg',
             title: 'Fractals',
+            route: 'fractals', 
         },
           {
             image: 'https://media.istockphoto.com/id/1309398170/vector/color-palette-5.jpg?s=612x612&w=0&k=20&c=fRQ9cs-4wmiV0P-yyeIez5Ib4-Hd0OMlxrNiqR0bCIE=',
             title: 'Color Schemes',
+            route: 'fractals', 
            },
           {
             image: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Fractal_fern_explained.png',
             title: 'Affine Transformations',
+            route: 'fractals', 
            },
         ],
       };
