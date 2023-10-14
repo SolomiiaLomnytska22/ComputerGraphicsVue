@@ -20,4 +20,8 @@ body {
   background: #1F3244;
   margin:0;
 }
+
+.v-input__details {
+    display: none;
+}
 </style>

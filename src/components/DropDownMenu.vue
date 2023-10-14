@@ -1,24 +1,54 @@
 <template>
-    <div>
-      <label for="fractalSelector">Select a Fractal:</label>
-      <select id="fractalSelector" v-model="selectedFractal">
-        <option value="Mandelbrot set">Mandelbrot set</option>
-        <option value="Vicsek fractal">Vicsek fractal</option>
-      </select>
-  
-      <div>
-        <p>You selected: {{ selectedFractal }}</p>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        selectedFractal: "Mandelbrot set", // Set the initial selection
-      };
+  <div>
+    <v-select class="custom-select"
+      variant='outlined'
+      v-model="selectedFractal"
+      @update:modelValue="navigateTo"
+      :items="fractals">
+  </v-select>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      selectedFractal: "mandelbrot",
+      fractals: [
+        { title: "Mandelbrot set", value: "mandelbrot" },
+        { title: "Vicsek fractal", value: "vicsek" },
+      ],
+    };
+  },
+  methods: {
+    navigateTo() {
+      console.log(this.selectedFractal)
+      this.$router.push({ name: this.selectedFractal });
     },
-  };
-  </script>
-  
+  },
+  created() {
+    this.navigateTo();
+  },
+};
+</script>
+
+<style scoped>
+.custom-select {
+
+  color: #D73246;
+  border-style: none;
+  background-color: rgb(255, 255, 255);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  border-radius: 5px;
+  width: 255px;
+
+}
+
+
+:deep(.v-input__details) {
+    display: none;;
+}
+
+
+</style>

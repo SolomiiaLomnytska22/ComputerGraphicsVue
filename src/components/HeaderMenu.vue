@@ -26,7 +26,7 @@
 img 
 {
   height: 65px;
-  padding: 30px 0;
+  margin: 30px 0;
   cursor: pointer;
 }
 header{

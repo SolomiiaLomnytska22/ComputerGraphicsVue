@@ -26,7 +26,7 @@ export default {
 }
 .logo{
     height: 65px;
-    padding: 60px 0;
+    margin: 60px 0;
 }
 .description
 {

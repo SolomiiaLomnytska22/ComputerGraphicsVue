@@ -1,4 +1,6 @@
+
 <template>
+    
    <div class = "main-content">
     <div class="page-heading">
         <h1 class="caption">FRACTALS</h1>
@@ -7,12 +9,15 @@
 
     <div class = "fractal-builder">
         <DropDownMenu></DropDownMenu>
+        <router-view></router-view>
+        <v-btn class="btn" variant="flat" color="#D73246" @click="navigateTo('main-page')">&lt;</v-btn>
     </div>
-
+    
    </div>
 </template>
 
 <script>
+
 import DropDownMenu from './DropDownMenu.vue'
 export default{
 components:{
@@ -58,9 +63,11 @@ components:{
 }
 .fractal-builder
 {
+    width: 100%;
     background-color: #04101A;
     padding: 80px;
     margin:75px 165px;
 
 }
+
 </style>
