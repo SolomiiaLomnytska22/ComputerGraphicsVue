@@ -15,8 +15,9 @@ export default {
     return {
       selectedFractal: "mandelbrot",
       fractals: [
-        { title: "Mandelbrot set", value: "mandelbrot" },
+        { title: "Mandelbrot fractal", value: "mandelbrot" },
         { title: "Vicsek fractal", value: "vicsek" },
+        { title: "Julia fractal", value: "julia" },
       ],
     };
   },

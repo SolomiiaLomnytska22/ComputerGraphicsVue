@@ -24,7 +24,7 @@ export default {
       let minSlider, maxSlider;
 
       p.setup = function() {
-        p.createCanvas(630, 740);
+        p.createCanvas(600, 740);
         p.pixelDensity(1);
 
         minSlider = p.createSlider(-2.5, 0, -2.5, 0.01);
@@ -85,20 +85,20 @@ export default {
 <style>
 
   #fractal{
-    margin-left: 10px;
+    max-width: 600px;
   }
   .fractal-container
   {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 55px 0;
   }
 
   .input-form{
     background-color: #1F3244;
     width: 255px;
     height: 740px;
-    margin: 55px 0;
     
   }
 </style>

@@ -1,15 +1,17 @@
 import FractalsPage from "@/components/FractalsPage";
 import MainPage from "@/components/MainPage";
-import MandelbrotJulia from "@/components/MandelbrotJulia";
+import MandelbrotFracatal from "@/components/MandelbrotFracatal";
 import VicsekFractal from "@/components/VicsekFractal";
+import JuliaFractal from "@/components/JuliaFractal";
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   { path: "/", component: MainPage, name: "main-page" },
   { path: "/fractals", component: FractalsPage, name: "fractals", children: [
-      { path: "", component: MandelbrotJulia },
-      { path: "mandelbrot", component: MandelbrotJulia, name: "mandelbrot" },
-      { path: "vicsek", component: VicsekFractal, name: "vicsek" }
+      { path: "", component: MandelbrotFracatal },
+      { path: "mandelbrot", component: MandelbrotFracatal, name: "mandelbrot" },
+      { path: "vicsek", component: VicsekFractal, name: "vicsek" },
+      { path: "julia", component: JuliaFractal, name: "julia" }
   ] },
  
 
