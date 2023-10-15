@@ -1,5 +1,5 @@
 .input-form{
-  background: linear-gradient(to bottom, #D73246, #1F3244);
+    background: linear-gradient(to bottom, #91212e, #1F3244);
     width: 255px;
     height: 740px;
     display: flex;
@@ -47,4 +47,17 @@
     height:15px;
     width:15px;
     border-radius: 100%;
+}
+
+#fractal{
+  max-width: 600px;
+  border-radius: 5px;
+  background-color: white;
+}
+.fractal-container
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 55px 0;
 }

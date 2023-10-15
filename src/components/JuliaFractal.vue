@@ -120,19 +120,3 @@ export default {
 };
 </script>
 
-<style scoped>
-
-  #fractal{
-    max-width: 600px;
-    border-radius: 5px;
-  }
-  .fractal-container
-  {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 55px 0;
-  }
-
-  
-</style>
