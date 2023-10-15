@@ -1,6 +1,28 @@
 <template>
   <div class="fractal-container">
-    <div class="input-form"></div>
+  <div class="input-form">
+      <div class="input-field">
+        <label for="ca">Enter value of Ca:</label>
+        <input type="number" id="ca"  v-model="ca" step="0.01" min="-1" max="1"/>
+      </div>
+      <div class="input-field">
+        <label for="cb">Enter value of Cb:</label>
+        <input type="number" id="cb"  v-model="cb" step="0.01"  min="-1" max="1"/>
+      </div>
+      <div class="input-field">
+        <label for="iterations">Iterations:</label>
+        <input type="number" id="iterations"  v-model="maxIterations" step="1" />
+      </div>
+      <div class="input-field">
+        <label for="color">Color:</label>
+        <input type="color" id="color" v-model="color"/>
+      </div>
+      <div class="input-field">
+        <label for="zoom">Zoom:</label>
+        <input type="range" id="zoom" v-model="zoom" min="0" max="7" step="1"/>
+      </div>
+      <v-btn class="btn" variant="flat" background-color = "white" color="#D73246" @click="draw">Build Fractal</v-btn>
+    </div>
     <div id="fractal"></div>
    
   </div>
@@ -86,6 +108,7 @@ export default {
 
   #fractal{
     max-width: 600px;
+    border-radius: 5px;
   }
   .fractal-container
   {
@@ -95,10 +118,4 @@ export default {
     margin: 55px 0;
   }
 
-  .input-form{
-    background-color: #1F3244;
-    width: 255px;
-    height: 740px;
-    
-  }
 </style>

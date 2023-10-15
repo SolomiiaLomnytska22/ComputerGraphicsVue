@@ -1,0 +1,50 @@
+.input-form{
+  background: linear-gradient(to bottom, #D73246, #1F3244);
+    width: 255px;
+    height: 740px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border-radius: 5px;
+  }
+  .input-field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+  }
+
+  input[type=number]{
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: 5px 0;
+    color: #04101A;
+  }
+  input[type=number]{
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: 5px 0;
+    color: #04101A;
+  }
+  input[type=range]{
+    margin: 10px 0;
+    -webkit-appearance: none !important;
+    background:rgb(255, 255, 255);
+    height:4px;
+    border-radius: 5px;
+  }
+  input[type=range]:hover{
+    cursor: pointer;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    appearance: none !important;
+    background:#D73246;
+    height:15px;
+    width:15px;
+    border-radius: 100%;
+}

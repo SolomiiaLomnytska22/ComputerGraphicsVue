@@ -2,16 +2,16 @@
   <div class="fractal-container">
     <div class="input-form">
       <div class="input-field">
-        <label for="ca">ca:</label>
-        <input type="number" id="ca" v-model="ca" step="0.01" min="-1" max="1"/>
+        <label for="ca">Enter value of Ca:</label>
+        <input type="number" id="ca"  v-model="ca" step="0.01" min="-1" max="1"/>
       </div>
       <div class="input-field">
-        <label for="cb">cb:</label>
-        <input type="number" id="cb" v-model="cb" step="0.01"  min="-1" max="1"/>
+        <label for="cb">Enter value of Cb:</label>
+        <input type="number" id="cb"  v-model="cb" step="0.01"  min="-1" max="1"/>
       </div>
       <div class="input-field">
         <label for="iterations">Iterations:</label>
-        <input type="number" id="iterations" v-model="maxIterations" step="1" />
+        <input type="number" id="iterations"  v-model="maxIterations" step="1" />
       </div>
       <div class="input-field">
         <label for="color">Color:</label>
@@ -23,7 +23,7 @@
       </div>
       <v-btn class="btn" variant="flat" background-color = "white" color="#D73246" @click="draw">Build Fractal</v-btn>
     </div>
-    <canvas ref="fractalCanvas"></canvas>
+    <canvas ref="fractalCanvas" id="fractal"></canvas>
    
   </div>
   
@@ -84,13 +84,14 @@ export default {
             b = twoab + this.cb;
             n++;
           }
-
           if (n === this.maxIterations) {
-            ctx.fillStyle = `rgba(${255}, ${182}, ${193}, ${255})`;
+            const hue = ((n / this.maxIterations) * 360) % 360;
+            const c = `hsl(${hue}, 100%, ${(n / this.maxIterations) ** 0.25 * 100}%)`;
+            ctx.fillStyle = c;
+            ctx.fillRect(i, j, 1, 1);
           } else {
-            let hu = ((n / this.maxIterations) * 360) % 360;
-            let c = this.calculateColor(hu, 100, Math.pow(n / this.maxIterations, 0.25) * 100);
-            ctx.fillStyle = `rgba(${red(c)}, ${red(c)}, ${blue(c)}, 1)`;
+            ctx.fillStyle = this.color; 
+            ctx.fillRect(i, j, 1, 1);
           }
           x += dx;
         }
@@ -101,10 +102,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
   #fractal{
     max-width: 600px;
+    border-radius: 5px;
   }
   .fractal-container
   {
@@ -114,10 +116,5 @@ export default {
     margin: 55px 0;
   }
 
-  .input-form{
-    background-color: #1F3244;
-    width: 255px;
-    height: 740px;
-    
-  }
+  
 </style>

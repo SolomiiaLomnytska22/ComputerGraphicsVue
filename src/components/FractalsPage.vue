@@ -32,6 +32,7 @@ components:{
 </script>
 
 <style scoped>
+   @import './inputs-styles.css';
 .learn-more-btn{
     cursor: pointer;
     height: 65px;
@@ -74,5 +75,7 @@ components:{
     margin:75px 165px;
 
 }
+
+
 
 </style>
