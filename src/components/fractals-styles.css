@@ -51,6 +51,7 @@
 
 #fractal{
   max-width: 600px;
+  max-height: 740px;
   border-radius: 5px;
   background-color: white;
 }
