@@ -49,8 +49,8 @@ export default {
       maxIterations: 100,
       minSlider: -2,
       maxSlider: 2,
-      ca: null,
-      cb: null,
+      ca: "",
+      cb: "",
       color: "#04101A",
       hue: 1,
     };
@@ -76,7 +76,7 @@ export default {
       
       };
 
-      p.draw = function (thisca = null, thiscb = null, thismaxIterations=100, thisminSlider = -2, thismaxSlider = 2, thiscolor = "#04101A", thishue = 1) {
+      p.draw = function (thisca = "", thiscb = "", thismaxIterations=100, thisminSlider = -2, thismaxSlider = 2, thiscolor = "#04101A", thishue = 1) {
         p.loadPixels();
         
         minval = Number(thisminSlider);
@@ -90,7 +90,7 @@ export default {
             let a = p.map(x, 0, p.width, minval, maxval);
             let b = p.map(y, 0, p.height, minval, maxval);
             let ca = a, cb = b;         
-           if (thisca!=null && thiscb!=null) {
+           if (thisca!="" && thiscb!="") {
               ca = thisca;
               cb = thiscb;
             } 
