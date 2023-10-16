@@ -3,7 +3,7 @@
     <div class="input-form">
       <div class="input-field">
         <label for="iterations">Iterations:</label>
-        <input type="number" id="iterations"  v-model="maxIterations" step="1" />
+        <input type="number" id="iterations"  v-model="maxIterations" max = "7" step="1" />
       </div>
       <div class="input-field">
         <label for="color">Color:</label>
@@ -32,7 +32,7 @@ export default {
       const canvas = this.$refs.fractalCanvas;
       const ctx = canvas.getContext("2d");
       canvas.width = 600;
-      canvas.height = 740;
+      canvas.height = 760;
     
     function drawCross(x, y, length, color) {
       ctx.beginPath();
@@ -72,7 +72,7 @@ export default {
       vicsek(x, y - length / 3, length / 3, n - 1, color);
     }
 
-    vicsek(300, 370, 550, this.maxIterations, this.color);
+    vicsek(300, 370, 550, this.maxIterations < 7 ? this.maxIterations: 7 , this.color);
     }
   }
 };

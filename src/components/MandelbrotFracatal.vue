@@ -14,17 +14,24 @@
         <input type="number" id="iterations"  v-model="maxIterations" step="1" />
       </div>
       <div class="input-field">
-        <label for="color">Color:</label>
+        <label for="color">Set color:</label>
         <input type="color" id="color" v-model="color"/>
+      </div>
+      <div class="input-field">
+        <label for="color">Background color:</label>
+        <input type="range" id="color" v-model="hue" min="1" max="255" step="1" />
       </div>
       <div class="input-field">
         <label for="zoom">Zoom Lower Corner:</label>
         <input type="range" id="zoom-top" v-model="minSlider" min="-2.5" max="0" step="0.01" />
       </div>
+      
       <div class="input-field">
         <label for="zoom">Zoom Upper Corner:</label>
         <input type="range" id="zoom-bottom" v-model="maxSlider" min="0" max="2.5" step="0.01" />
       </div>
+
+      
       <v-btn class="btn" variant="flat" background-color = "white" color="#D73246" @click="draw">Build Fractal</v-btn>
     </div>
     <div id="fractal"></div>
@@ -45,6 +52,7 @@ export default {
       ca: null,
       cb: null,
       color: "#04101A",
+      hue: 1,
     };
   },
   mounted() {
@@ -53,7 +61,7 @@ export default {
   methods: {
     draw() {
       if (this.sketch) {
-        this.sketch.draw(this.ca, this.cb, this.maxIterations, this.minSlider, this.maxSlider, this.color);
+        this.sketch.draw(this.ca, this.cb, this.maxIterations, this.minSlider, this.maxSlider, this.color, this.hue);
       }
     },
     navigateTo(route) {
@@ -62,13 +70,13 @@ export default {
     p5sketch(p) {
       let minval, maxval;
       p.setup = function () {
-        p.createCanvas(600, 740);
+        p.createCanvas(600, 760);
         p.pixelDensity(1);
         p.colorMode(p.HSB);
       
       };
 
-      p.draw = function (thisca = null, thiscb = null, thismaxIterations=100, thisminSlider = -2, thismaxSlider = 2, thiscolor = "#04101A") {
+      p.draw = function (thisca = null, thiscb = null, thismaxIterations=100, thisminSlider = -2, thismaxSlider = 2, thiscolor = "#04101A", thishue = 1) {
         p.loadPixels();
         
         minval = Number(thisminSlider);
@@ -103,7 +111,8 @@ export default {
               n++;
             }
 
-            let hue = p.map(n, 0, 100, 0, 255);
+        
+            
             let brightness = 0;
             if (n < thismaxIterations) {
               brightness = 255;
@@ -116,7 +125,10 @@ export default {
             const bb = parseInt(hex.substring(4, 6), 16);
             const rgbComponents = { r: rr, g: gg, b: bb };
 
-            let c = p.color(hue, 255, brightness);
+
+            brightness = p.map(n+10, 0, thismaxIterations, 0, 100)
+            let c = p.color(thishue, 255, brightness);
+            
             let pix = (x + y * p.width) * 4;
             if (n == thismaxIterations) {
               p.pixels[pix + 0] = rgbComponents.r;
