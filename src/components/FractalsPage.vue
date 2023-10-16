@@ -6,16 +6,17 @@
         <h1 class="caption">FRACTALS</h1>
         <a href="https://en.wikipedia.org/wiki/Fractal"><div class="learn-more-btn"></div></a>
     </div>
-
     <div class = "fractal-builder">
         <div style="display: flex; flex-direction: row; justify-content: space-between; ">
             <DropDownMenu></DropDownMenu>
-            <img src="../assets/Icon.svg" alt="Info"  >
+            <img src="../assets/Icon.svg" alt="Info" @click="navigateTo('how-to')"  >
         </div>
         <router-view></router-view>
-        <v-btn class="btn" variant="flat" color="#D73246" @click="navigateTo('main-page')">&lt;</v-btn>
+        
     </div>
-    
+    <div style ="display: flex; justify-content: flex-start; width: 100%">
+    <v-btn class="btn" variant="flat" color="#D73246" @click="navigateTo('main-page')">&lt;</v-btn>
+    </div>
    </div>
 </template>
 
@@ -36,6 +37,9 @@ components:{
 
 <style scoped>
    @import './fractals-styles.css';
+   img:hover{
+    cursor: pointer;
+   }
 .learn-more-btn{
     cursor: pointer;
     height: 65px;
