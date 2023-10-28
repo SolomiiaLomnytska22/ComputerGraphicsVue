@@ -4,12 +4,12 @@
    <div class = "main-content">
     <div class="page-heading">
         <h1 class="caption">FRACTALS</h1>
-        <a href="https://en.wikipedia.org/wiki/Fractal"><div class="learn-more-btn"></div></a>
+        <a href="https://en.wikipedia.org/wiki/Fractal" target="_blank"><div class="learn-more-btn"></div></a>
     </div>
     <div class = "fractal-builder">
         <div style="display: flex; flex-direction: row; justify-content: space-between; ">
             <DropDownMenu></DropDownMenu>
-            <img src="../assets/Icon.svg" alt="Info" @click="navigateTo('how-to')"  >
+            <img src="../assets/Icon.svg" alt="Info" @click="navigateTo('how-to-fractals')"  >
         </div>
         <router-view></router-view>
         
@@ -29,6 +29,7 @@ export default{
         this.$router.push({ name: route });
       }
     },
+
 components:{
     DropDownMenu
 }

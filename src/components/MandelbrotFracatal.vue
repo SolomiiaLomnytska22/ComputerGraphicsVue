@@ -90,7 +90,7 @@ export default {
             let a = p.map(x, 0, p.width, minval, maxval);
             let b = p.map(y, 0, p.height, minval, maxval);
             let ca = a, cb = b;         
-           if (thisca!="" && thiscb!="") {
+           if (thisca.length!==0 && thiscb.length!==0) {
               ca = thisca;
               cb = thiscb;
             } 

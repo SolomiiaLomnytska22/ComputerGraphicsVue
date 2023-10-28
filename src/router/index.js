@@ -3,6 +3,7 @@ import MainPage from "@/components/MainPage";
 import MandelbrotFracatal from "@/components/MandelbrotFracatal";
 import VicsekFractal from "@/components/VicsekFractal";
 import HowToUseFractals from "@/components/HowToUseFractals"
+import ColorsPage from "@/components/ColorsPage"
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -13,8 +14,8 @@ const routes = [
       { path: "mandelbrot", component: MandelbrotFracatal, name: "mandelbrot" },
       { path: "vicsek", component: VicsekFractal, name: "vicsek" }
   ] },
-  { path: "/how-to-use-fractal-builder", component: HowToUseFractals, name: "how-to" },
- 
+  { path: "/how-to-use-fractal-builder", component: HowToUseFractals, name: "how-to-fractals" },
+  { path: "/colors", component: ColorsPage, name: "colors" },
 ]; 
 
 const router = createRouter({

@@ -15,7 +15,7 @@ export default {
     return {
       selectedFractal: "mandelbrot",
       fractals: [
-        { title: "Mandelbrot fractal", value: "mandelbrot" },
+        { title: "Mandelbrot and Julia fractal", value: "mandelbrot" },
         { title: "Vicsek fractal", value: "vicsek" }        
       ],
     };
@@ -26,7 +26,7 @@ export default {
       this.$router.push({ name: this.selectedFractal });
     },
   },
-  created() {
+  mounted() {
     this.navigateTo();
   },
 };

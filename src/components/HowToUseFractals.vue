@@ -1,4 +1,5 @@
 <template>
+    <div>
      <div class="page-heading">
         <h1 class="caption">HOW TO USE THE PROGRAM?</h1>
     </div>
@@ -23,10 +24,11 @@
         </div>
            
         </div>
-        <v-btn class="btn" style = "margin: 75px 0 0 0;" variant="flat" color="#D73246" @click="navigateTo('main-page')">&lt;</v-btn>
+        <v-btn class="btn" style = "margin: 75px 0 0 0;" variant="flat" color="#D73246" @click="navigateTo('fractals')">&lt;</v-btn>
          
         </div>
     </div>
+</div>
  </template>
  
  <script>

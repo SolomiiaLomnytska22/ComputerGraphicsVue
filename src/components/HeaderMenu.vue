@@ -4,8 +4,8 @@
       <nav>
         <ul>
           <li @click="navigateTo('fractals')">Fractals</li>
-          <li @click="navigateTo('fractals')">Color Schemes</li>
-          <li @click="navigateTo('fractals')">Affine Transformations</li>
+          <li @click="navigateTo('colors')">Color Schemes</li>
+          <li @click="navigateTo('')">Affine Transformations</li>
         </ul>
       </nav>
     </header>
