@@ -105,7 +105,7 @@ export default {
       this.$router.push({ name: route });
     },
     saveImage() {
-      const canvas = this.$refs.imageCanvas;
+      const canvas = this.$refs.newImageCanvas;
       canvas.toBlob((blob) => {
         saveAs(blob, this.uploadedFileName);
       });
@@ -116,6 +116,9 @@ export default {
 
       this.drawImage(this.$refs.imageCanvas);
       this.drawImage(this.$refs.newImageCanvas);
+
+      this.saturationValue = 0;
+      this.brightnessValue = 0;
     },
     drawImage(canvas) {
       const context = canvas.getContext("2d");
@@ -147,7 +150,7 @@ export default {
     adjustSaturationAndBrightness() {
       let pixels;
       const originalCanvas = this.$refs.imageCanvas;
-      // console.log(this.saturationValue);
+      console.log("Saturation:"+this.saturationValue, " Brightness"+this.brightnessValue);
 
       pixels = originalCanvas.getContext("2d").getImageData(0, 0, originalCanvas.width, originalCanvas.height).data;
 
@@ -161,12 +164,13 @@ export default {
             b: pixels[pos + 2],
           };
           var hsv = rgbToHsv(pixel.r, pixel.g, pixel.b);
-
+          
           if (hsv[0] * 360 > 200 && hsv[0] * 360 < 260) {
-            hsv[1] = 0;
-            hsv[2] = 1;
+            hsv[1] +=  parseFloat(this.saturationValue);
+            hsv[2] +=parseFloat(this.brightnessValue);
+            
             var rgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
-            console.log(rgb);
+           
             pixels[pos] = rgb[0];
             pixels[pos + 1] = rgb[1];
             pixels[pos + 2] = rgb[2];
