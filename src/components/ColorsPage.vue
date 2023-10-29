@@ -1,4 +1,3 @@
-
 <template>
     
     <div class = "main-content">
@@ -9,30 +8,28 @@
      </div>
 
      <div class = "content">
-         <div style="display: flex; flex-direction: row; justify-content: space-between; ">
-            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 250px;">
-            <v-btn class="btn" variant="flat" color="#FFFFFF">
-                Upload 
-                <svg-icon style = "padding-left: 5px; color: #04101A" type="mdi" :path="mdiUpload"></svg-icon>
-            </v-btn>
+         <div class="toolbar-btn">
+            <div class="buttons">
+            <ImageUploader  style="margin-right:10px"  @file-selected="handleFileSelected"></ImageUploader>
             <v-btn class="btn" variant="flat" color="#D73246">Save
                 <svg-icon style = "padding-left: 5px; color: #FFFFFF" type="mdi" :path="mdiContentSaveAll"></svg-icon>
             </v-btn>
+            <span class="filename" >{{ uploadedFileName }}</span>
             </div>
              <img src="../assets/Icon.svg" alt="Info" @click="navigateTo('')"  >
         </div>
          <div class = "work-area">
             <div class = "picture-container"> 
-                <img src="@/./assets/PlaceHolder.png" alt="Your Image">
+                <canvas ref= "imageCanvas" alt="Your Image"></canvas>
                     <div class="toolbar">
                         <v-btn class="btn" variant="text" color="white">
                             <svg-icon style = "color: #ffffff" type="mdi" :path="mdiEyeOff"></svg-icon>
                         </v-btn>
-                        <span style="padding: 0px 5px; margin: 0;">HSV: X.X.X </span><span style="padding: 0px 5px; margin: 0;">CMYK: X.X.X.X</span>
+                        <span class="info">HSV: X.X.X </span><span class="info">CMYK: X.X.X.X</span>
                     </div>
             </div >
             <div class = "input-form" style="height: auto;">
-            <p style="color: white; font-size: 18px; padding-bottom: 30px; font-weight: 600;  ">Change the brightness and saturation of the blue color:</p>
+            <p class="title">Change the brightness and saturation of the blue color:</p>
             <div class="input-field" >
                 <label for="brightness">Brightness:</label>
                 <input type="range" id="brightness" min="1" max="255" step="1" />
@@ -59,21 +56,52 @@
  
  import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiUpload, mdiContentSaveAll, mdiEyeOff} from '@mdi/js';
-
+import ImageUploader from './ImageUploader.vue';
  export default{
      methods: {
        navigateTo(route) {
          this.$router.push({ name: route });
+       },
+       handleFileSelected(data)
+       {
+        this.selectedImage = data.selectedImage;
+        this.uploadedFileName = data.uploadedFileName;
+
+        const canvas = this.$refs.imageCanvas;
+        const context = canvas.getContext('2d');
+        const image = new Image();
+        image.src = this.selectedImage;
+        image.onload = () => {
+        canvas.width = image.width;
+        canvas.height = image.height;
+        context.drawImage(image, 0, 0);
        }
      },
+       defaultDraw(){
+        const canvas = this.$refs.imageCanvas;
+        const context = canvas.getContext('2d');
+        const image = new Image();
+        image.src = this.selectedImage;
+        image.onload = () => {
+        canvas.width = image.width;
+        canvas.height = image.height;
+        context.drawImage(image, 0, 0);
+       }
+    }},
  components:{
-    SvgIcon
+    SvgIcon,
+    ImageUploader
+ },
+ mounted(){
+    this.defaultDraw();
  },
  data() {
     return {
        mdiUpload, 
        mdiContentSaveAll,
-       mdiEyeOff
+       mdiEyeOff,
+       selectedImage:"/PlaceHolder.png",
+       uploadedFileName:""
     }
   }
  }
@@ -81,7 +109,15 @@ import { mdiUpload, mdiContentSaveAll, mdiEyeOff} from '@mdi/js';
  
  <style scoped>
     @import './fractals-styles.css';
-    img:hover{
+
+    .buttons{
+        display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 250px;
+    }
+    .toolbar-btn{
+        display: flex; flex-direction: row; justify-content: space-between; 
+        padding:0px;
+    }
+    canvas:hover{
      cursor: pointer;
     }
  .learn-more-btn{
@@ -95,6 +131,9 @@ import { mdiUpload, mdiContentSaveAll, mdiEyeOff} from '@mdi/js';
  .learn-more-btn:hover {
      background-image: url('../assets/AboutBtnPressed.svg');
  }
+ .info{
+    padding: 0px 5px; margin: 0;
+ }
  .caption
    {
      color: white;
@@ -102,6 +141,9 @@ import { mdiUpload, mdiContentSaveAll, mdiEyeOff} from '@mdi/js';
      font-size: 40px;
      margin: 0;
      font-weight: bold;
+   }
+   .title{
+    color: white; font-size: 18px; padding-bottom: 30px; font-weight: 600;  
    }
  .page-heading
  {
@@ -151,7 +193,7 @@ import { mdiUpload, mdiContentSaveAll, mdiEyeOff} from '@mdi/js';
     overflow: hidden;
 }
 
-.picture-container img {
+.picture-container canvas {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -167,6 +209,11 @@ import { mdiUpload, mdiContentSaveAll, mdiEyeOff} from '@mdi/js';
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.filename
+{
+    color: #FFFFFF; margin-left:10px
 }
 
 
