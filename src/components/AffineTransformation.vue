@@ -351,4 +351,28 @@ canvas {
   border-radius: 5px;
   background-color: #ffffff;
 }
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #d73246;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+
+input[type="checkbox"]:checked::before {
+  content: '\2714';
+  display: block;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+  font-size: 21px;
+  color: #fff; 
+}
 </style>
