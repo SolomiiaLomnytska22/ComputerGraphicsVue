@@ -37,7 +37,7 @@
           {
             image: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Fractal_fern_explained.png',
             title: 'Affine Transformations',
-            route: '', 
+            route: 'affine', 
            },
         ],
       };
