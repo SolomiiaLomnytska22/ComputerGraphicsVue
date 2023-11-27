@@ -17,7 +17,7 @@
           </v-btn>
           <span class="filename">{{ uploadedFileName }}</span>
         </div>
-        <img src="../assets/Icon.svg" alt="Info" @click="navigateTo('')" />
+        <img src="../assets/Icon.svg" alt="Info" @click="navigateTo('how-to-colors')" />
       </div>
       <div class="work-area">
         <div class="picture-container">
@@ -150,7 +150,7 @@ export default {
     adjustSaturationAndBrightness() {
       let pixels;
       const originalCanvas = this.$refs.imageCanvas;
-      console.log("Saturation:"+this.saturationValue, " Brightness"+this.brightnessValue);
+      console.log("Saturation:" + this.saturationValue, " Brightness" + this.brightnessValue);
 
       pixels = originalCanvas.getContext("2d").getImageData(0, 0, originalCanvas.width, originalCanvas.height).data;
 
@@ -164,13 +164,13 @@ export default {
             b: pixels[pos + 2],
           };
           var hsv = rgbToHsv(pixel.r, pixel.g, pixel.b);
-          
+
           if (hsv[0] * 360 > 200 && hsv[0] * 360 < 260) {
-            hsv[1] +=  parseFloat(this.saturationValue);
-            hsv[2] +=parseFloat(this.brightnessValue);
-            
+            hsv[1] += parseFloat(this.saturationValue);
+            hsv[2] += parseFloat(this.brightnessValue);
+
             var rgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
-           
+
             pixels[pos] = rgb[0];
             pixels[pos + 1] = rgb[1];
             pixels[pos + 2] = rgb[2];

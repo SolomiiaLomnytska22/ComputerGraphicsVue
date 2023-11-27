@@ -5,7 +5,7 @@
         <p class="caption">LEARN ABOUT COMPUTER GRAPHICS</p>
       </div>
       <div class="right-section">
-        <button class="start-button">Take Test</button>
+        <button class="start-button" @click="openTest">Take Test</button>
       </div>
     </div>
     <div class="block">
@@ -20,7 +20,7 @@
           </p>
           <div class="buttons">
             <button class="go-to-lab-button" @click="navigateTo('fractals')">Go to Lab</button>
-            <button class="read-more-button" @click="navigateTo('fractals')">Read More</button>
+            <button class="read-more-button" @click="openMoreFractals">Read More</button>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
           </p>
           <div class="buttons">
             <button class="go-to-lab-button" @click="navigateTo('colors')">Go to Lab</button>
-            <button class="read-more-button" @click="navigateTo('colors')">Read More</button>
+            <button class="read-more-button" @click="openMoreColors">Read More</button>
           </div>
         </div>
       </div>
@@ -52,8 +52,8 @@
             typically used to correct for geometric distortions or deformations that occur with non-ideal camera angles.
           </p>
           <div class="buttons">
-            <button class="go-to-lab-button" @click="navigateTo('main-page')">Go to Lab</button>
-            <button class="read-more-button" @click="navigateTo('main-page')">Read More</button>
+            <button class="go-to-lab-button" @click="navigateTo('affine')">Go to Lab</button>
+            <button class="read-more-button" @click="openMoreAffine">Read More</button>
           </div>
         </div>
       </div>
@@ -69,6 +69,18 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push({ name: route });
+    },
+    openTest() {
+      window.open("https://play.howstuffworks.com/quiz/fractals-quiz", "_blank");
+    },
+    openMoreFractals() {
+      window.open("https://en.wikipedia.org/wiki/Fractal", "_blank");
+    },
+    openMoreColors() {
+      window.open("https://en.wikipedia.org/wiki/Color_scheme", "_blank");
+    },
+    openMoreAffine() {
+      window.open("https://en.wikipedia.org/wiki/Affine_transformation", "_blank");
     },
   },
 };
